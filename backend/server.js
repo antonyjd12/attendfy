@@ -8,8 +8,17 @@ const devicesRouter = require('./routes/devices');
 // Initialize express app
 const app = express();
 
+// CORS Configuration
+const corsOptions = {
+  origin: 'https://attendfy-1.onrender.com',
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true, // Allow cookies/auth headers
+  optionsSuccessStatus: 204
+};
+app.use(cors(corsOptions));
+app.options('*', cors(corsOptions)); // Handle preflight requests
+
 // Middleware
-app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 
