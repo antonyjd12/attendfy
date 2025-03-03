@@ -1,0 +1,155 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Basic transitions */
+button,
+a,
+input,
+select,
+textarea {
+  transition: all 0.2s ease-in-out;
+}
+
+/* Remove default focus outline and add custom one */
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply transition-colors duration-200;
+  }
+
+  body {
+    @apply bg-light-bg dark:bg-dark-bg text-light-text-primary dark:text-dark-text-primary;
+  }
+
+  /* Add smooth transitions for all interactive elements */
+  button, a, input, select, textarea {
+    @apply transition-all duration-200;
+  }
+}
+
+@layer components {
+  .card {
+    @apply bg-light-surface dark:bg-dark-surface 
+           border border-light-border dark:border-dark-border 
+           rounded-xl shadow-soft dark:shadow-dark-soft 
+           transition-all duration-200 
+           hover:shadow-soft-lg dark:hover:shadow-dark-soft-lg;
+  }
+
+  .input-base {
+    @apply appearance-none block w-full px-3 py-2 
+           bg-light-surface dark:bg-dark-surface 
+           text-light-text-primary dark:text-dark-text-primary 
+           border border-light-border dark:border-dark-border 
+           rounded-md shadow-sm 
+           placeholder-light-text-tertiary dark:placeholder-dark-text-tertiary
+           focus:outline-none focus:ring-primary-500 focus:border-primary-500;
+  }
+
+  .btn-primary {
+    @apply flex justify-center py-2 px-4 
+           border border-transparent rounded-md shadow-sm 
+           text-sm font-medium text-white 
+           bg-primary-600 hover:bg-primary-700 
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-500
+           dark:focus:ring-offset-dark-bg
+           transition-colors duration-200;
+  }
+
+  .btn-secondary {
+    @apply px-4 py-2 bg-gradient-to-r from-secondary-500 to-secondary-600 text-white rounded-lg 
+           shadow-sm hover:from-secondary-600 hover:to-secondary-700 transition-all duration-200
+           focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 dark:focus:ring-offset-dark-bg
+           dark:shadow-none dark:hover:shadow-lg dark:hover:shadow-secondary-500/20;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary-500 via-secondary-500 to-primary-600 
+           animate-gradient bg-[length:400%_400%];
+  }
+
+  /* Add table styles */
+  .table-container {
+    @apply bg-light-card dark:bg-dark-card rounded-lg shadow-soft overflow-hidden;
+  }
+
+  .table-header {
+    @apply bg-gray-50 dark:bg-dark-hover text-gray-500 dark:text-gray-400;
+  }
+
+  .table-row {
+    @apply hover:bg-gray-50 dark:hover:bg-dark-hover;
+  }
+
+  /* Add form styles */
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 dark:text-gray-300;
+  }
+
+  .form-select {
+    @apply bg-light-card dark:bg-dark-card border-light-border dark:border-dark-border 
+           text-light-text dark:text-dark-text;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary-500 to-secondary-500;
+  }
+
+  .bg-blur {
+    @apply bg-light-card/80 dark:bg-dark-card/80 backdrop-blur-lg;
+  }
+  .hover-underline:hover {
+    text-decoration: underline;
+  }
+}
